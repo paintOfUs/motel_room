@@ -62,7 +62,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Tiêu đề phòng trọ</h5>
                                     <h4>Giá tiền</h4>
-                                    <a href="#" class="btn btn-primary text_center">Xem chi tiết</a>
+                                    <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>

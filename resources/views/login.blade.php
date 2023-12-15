@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .error-message { color: red; margin:12px;font-size: italic;}
+    </style>
 </head>
 <body>
     @include('header')
@@ -16,20 +19,34 @@
         <h3>Đăng nhập tài khoản</h3>
         <div class="row mt-3">
             <div class="col-lg-7 col-md-12">
-                <form action="{{ route('login.do') }}" method="post">
+                <form action="{{ route('dologin') }}" method="post">
                     @csrf
                     <div class="form-floating mb-4">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" @if (
+                            isset($_COOKIE["email"])) value="{{ $_COOKIE["email"] }}" @endif
+                        >
                         <label for="floatingInput">Email address</label>
+                        @if ($errors -> has('email'))
+                            <span class="error-message">*{{ 
+                            $errors->first('email') }}</span>
+                        @endif
                       </div>
+
                       <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"@if (
+                            isset($_COOKIE["password"])) value="{{ $_COOKIE["password"] }}" @endif
+                        >
                         <label for="floatingPassword">Password</label>
+                        @if ($errors -> has('password'))
+                            <span class="error-message">* {{ 
+                            $errors->first('password') }}</span>
+                        @endif
                       </div>
                       <div class='row'>
                         <div class="form-check col-6  mb-4 ">
-                            <input class="form-check-input ms-2" type="checkbox" id="autoSizingCheck2">
-                            <label class="form-check-label ms-3" for="autoSizingCheck2">
+                            <input class="form-check-input ms-2" type="checkbox" id="remember_me" name="remember_me"@if (
+                                isset($_COOKIE["email"])) checked="" @endif>
+                            <label class="form-check-label ms-3" for="remember_me" >
                               nhớ
                             </label>
                         </div>

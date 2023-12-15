@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\AuthenticateMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +20,16 @@ use App\Http\Controllers\DetailController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/login/do', [LoginController::class, 'doLogin'])->name('login.do');
-Route::get('/Admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/doLogin', [AuthController::class, 'login'])->name('dologin');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/regist', [RegisterController::class, 'index'])->name('regist');
+Route::get('/doregist', [RegisterController::class, 'register'])->name('doregist');
+Route::get('/Admin', [AdminController::class, 'index'])->name('admin')->middleware(AuthenticateMiddleware::class);
+Route::post('/Admin', [AdminController::class, 'page'])->name('logic');
+Route::get('/Admin/edit/{id}', [AdminController::class, 'edit'])->name('edit');
+Route::get('/Admin/remove/{id}', [AdminController::class, 'remove'])->name('remove');
+Route::match(['post', 'put'], '/update/{id}', [UserController::class, 'update'])->name('update');
 Route::get('/detail', [DetailController::class, 'detail'])->name('detail');

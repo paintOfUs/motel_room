@@ -14,16 +14,12 @@ return new class extends Migration
         Schema::dropIfExists('posts');
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title',60);
             $table->text('description');
-            $table->date('date');
-            //$table->unsignedBigInteger('userID');
-            //$table->foreign('userID')->references('id')->on('users');
+            $table->string('poster',30);
+            $table->string('date',30);
             $table->string('img')->nullable();
             $table->timestamps();
-        });
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained();
         });
     }
 

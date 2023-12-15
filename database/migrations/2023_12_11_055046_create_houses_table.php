@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::dropIfExists('houses');
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
+            $table->string('manager',30);
+            $table->string('house_name',30);
             $table->float('area');
             $table->float('cost');
-            //$table->('locationID');
-            //$table->foreign('locationID')->references('locationID')->on('locations');
+            $table->string('city',30);
+            $table->string('district',30);
             $table->timestamps();
-        });
-        Schema::table('houses', function (Blueprint $table) {
-            $table->foreignId('location_id')->constrained();
         });
     }
 

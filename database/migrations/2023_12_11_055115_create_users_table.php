@@ -14,18 +14,15 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name',60);
-            $table->string('sex',10)->nullable();
-            $table->string('email',30)->unique();
-            $table->string('password',30);
-            $table->string('phone',20);
-            $table->string('role',30);
-            //$table->unsignedBigInteger('houseID')->nullable();
-            //$table->foreign('houseID')->references('houseID')->on('houses')->onDelete('set null');
-            $table->timestamps();
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('house_id')->constrained();
+            $table->string('user_name',255);
+            $table->string('sex',20)->nullable();
+            $table->string('email',255)->unique();
+            $table->string('password',255);
+            $table->string('phone',20)->nullable();
+            $table->integer('role')->nullable();
+            $table->longText('img')->nullable();
+            //$table->string('remember_token')->nullable();
+            $table->timestamps();;
         });
     }
 

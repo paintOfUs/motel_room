@@ -6,6 +6,17 @@
 </div>
 <div class="card mt-5">
     <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+                <a href="{{ route('create') }}">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fa-solid fa-plus"></i>
+                        Thêm
+                    </button>
+                </a>
+            </div>
+            <div class="col-10"></div>
+        </div>
         <table class="table">
             <thead>
                 <tr>

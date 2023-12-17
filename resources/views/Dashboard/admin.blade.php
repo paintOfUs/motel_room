@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
@@ -54,8 +55,8 @@
                         @csrf
                         <ul class="list-group">
                             <li class="list-group-item" data-value="1">Dashboard</li>
-                            <li class="list-group-item" data-value="2">Statistics</li>
-                            <li class="list-group-item" data-value="3">Reports</li>
+                            <li class="list-group-item" data-value="2">Update</li>
+                            <li class="list-group-item" data-value="3">Add</li>
                             <li class="list-group-item" data-value="4">Users</li>
                         </ul>
                         <input type="hidden" name="selectedPage" id="selectedPage">
@@ -68,8 +69,9 @@
             @if($page == 1)
 
                 @include('Dashboard.dashboard')
-            @elseif($page == 5)
-
+            @elseif($page == 2)
+                @include('Dashboard.add')
+            @elseif($page == 3)
                 @include('Dashboard.update')
             @endif
             

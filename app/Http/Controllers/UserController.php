@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
@@ -29,9 +30,33 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('admin')->with([
-            'message' => 'User added successfully!', 
+            'message' => 'User update successfully!', 
             'status' => 'success'
         ]);
 
+    }
+
+    public function create(Request $request){
+        $fileName = '';
+
+        if ($request->hasFile('img')) {
+            $fileName = $request->file('img')->getClientOriginalName();
+            $request->file('img')->storeAs('public/images', $fileName);
+        }
+
+        User::create([
+            'user_name' => $request->input('user_name'),
+            'email' => $request->input('email'),
+            'sex' => $request->input('sex'),
+            'password' => Hash::make($request->input('password')),
+            'phone' => $request->input('phone'),
+            'img' => $fileName,
+            'role' =>$request->input('role'),
+        ]);
+
+        return redirect()->route('admin')->with([
+            'message' => 'User added successfully!', 
+            'status' => 'success'
+        ]);
     }
 }

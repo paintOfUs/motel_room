@@ -66,7 +66,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 <h1>Để cài đặt project này về sử dụng: sau khi clone về vào dự án đổi tên file <b>".env.example" thành ".env"; sau đó trong terminal chạy composer i để cài các gói cần thiết của composer</b></h1>
-
+<h1>Nhớ tạo mới database có tên motel_room</h1>
 <h1>Kế tiếp chạy lệnh <b>php artisan migrate</b> rồi dùng câu lệnh dể insert dữ liệu ban đầu vào <b>php artisan db:seed</b> </h1>
 #Thực hiện câu lệnh <b>php artisan storage:link</b> để tạo nơi lưu chữ ảnh cho chức năng upload ảnh
 <h1>Sau đó chạy lệnh <b>php artisan serve</b> mở serve lên và thực hiên tạo key và refresh lại server</h1>

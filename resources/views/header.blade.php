@@ -54,61 +54,75 @@
 </nav>
 <div class="container">
     <h3>Tìm kiếm nhanh</h3>
-    <form class="row g-3 mt-1">
+    <form class="row g-3 mt-1" action="{{ route('search') }}" method="POST">
+        @csrf
+        <?php
+        use App\Models\post;
+        $posts_categories = post::distinct()->pluck('categories');
+        $posts_city = post::distinct()->pluck('city');
+        $posts_district = post::distinct()->pluck('district');
+        $posts_area = post::distinct()->pluck('area');
+        $posts_cost = post::distinct()->pluck('cost');
+        ?>
         <!-- Select 1 -->
         <div class="col-auto mx-auto">
             <label for="dropdownInput" class="visually-hidden">Danh mục</label>
-            <select class="form-select dropdownInput">
+            <select class="form-select dropdownInput" name="categories">
                 <option selected>Danh mục</option>
-                <option value="1">Option 2</option>
-                <option value="2">Option 3</option>
+                @foreach ($posts_categories as $item)               
+                <option value="{{ $item }}">{{ $item }} </option>
+                @endforeach
             </select>
         </div>
 
         <!-- Select 2 -->
         <div class="col-auto mx-auto">
             <label for="dropdownInput" class="visually-hidden">Danh mục</label>
-            <select class="form-select dropdownInput">
+            <select class="form-select dropdownInput" name="city">
                 <option selected>Tỉnh/Thành Phố</option>
-                <option value="1">Option 2</option>
-                <option value="2">Option 3</option>
+                @foreach ($posts_city as $item)               
+                <option value="{{ $item }}">{{ $item }} </option>
+                @endforeach
             </select>
         </div>
 
         <!-- Select 3 -->
         <div class="col-auto mx-auto">
             <label for="dropdownInput" class="visually-hidden">Danh mục</label>
-            <select class="form-select dropdownInput">
+            <select class="form-select dropdownInput" name="district">
                 <option selected>Quận/Huyện</option>
-                <option value="1">Option 2</option>
-                <option value="2">Option 3</option>
+                @foreach ($posts_district as $item)               
+                <option value="{{ $item }}">{{ $item }} </option>
+                @endforeach
             </select>
         </div>
 
         <!-- Select 4 -->
         <div class="col-auto mx-auto">
             <label for="dropdownInput" class="visually-hidden">Danh mục</label>
-            <select class="form-select dropdownInput">
+            <select class="form-select dropdownInput" name="area">
                 <option selected>Diện tích</option>
-                <option value="1">Option 2</option>
-                <option value="2">Option 3</option>
+                @foreach ($posts_area as $item)               
+                <option value="{{ $item }}">{{ $item }} </option>
+                @endforeach
             </select>
         </div>
 
         <!-- Select 5 -->
         <div class="col-auto mx-auto">
             <label for="dropdownInput" class="visually-hidden">Danh mục</label>
-            <select class="form-select dropdownInput">
+            <select class="form-select dropdownInput" name="cost">
                 <option selected>Mức giá</option>
-                <option value="1">Option 2</option>
-                <option value="2">Option 3</option>
+                @foreach ($posts_cost as $item)               
+                <option value="{{ $item }}">{{ $item }} </option>
+                @endforeach
             </select>
         </div>
 
         <!-- Input Search -->
         <div class="col-auto mx-auto">
             <label for="inputSearch" class="visually-hidden">Tìm theo tên</label>
-            <input type="text" class="form-control" id="inputSearch" placeholder="Search">
+            <input type="text" class="form-control" id="inputSearch" placeholder="Search" name="search">
         </div>
 
         <!-- Button -->

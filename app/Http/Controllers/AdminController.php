@@ -24,6 +24,12 @@ class AdminController extends Controller
         // Truyền biến $user vào view để bạn có thể sử dụng nó trong trang sửa
         return view('Dashboard.admin',['page'=>$page,'user'=>$user]);
     }
+
+    public function create(){
+        // Truyền biến $user vào view để bạn có thể sử dụng nó trong trang sửa
+        return view('Dashboard.admin',['page'=>2]);
+    }
+
     public function remove($id){
         $user = User::find($id);
 

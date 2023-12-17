@@ -10,31 +10,31 @@
                     <!-- Nội dung div rộng 9 cột -->
                     <h2 class="bg-primary text-white text-center">Tin đứng top</h2>
                     <hr class="text-danger my-4">
-                    <div class="container">
+                    <div class="container" >
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                             <?php 
-                                for ($i=0; $i<12; $i++) { 
-                                    
+                                foreach ($posts as $post) {
+                                    # code...
                                     ?>
                                     <div class="col mb-4">
-                                            <div class="card mx-auto">
-                                                <img src="https://bandon.vn/uploads/posts/thiet-ke-nha-tro-dep-2020-bandon-0.jpg"
-                                                    class="card-img-top" alt="...">
+                                            <div class="card mx-auto" style="height: 604px;font-size: 12px;">
+                                                <img src="{{ $post->img }}"
+                                                    class="card-img-top" alt="..." style="width: auto; height: 300px; object-fit: cover; object-position: center;">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-8">
-                                                            <h5 class="card-title">Tiêu đề phòng trọ</h5>
-                                                            <p class="card-text">Địa điểm</p>
-                                                        </div>
-                                                        <div class=col-4>
-                                                            <h4>Giá tiền</h4>
-                                                        </div>
+                                                            <h5 class="card-title">{{ $post->title }}</h5>
+                                                            <p class="card-text">{{ $post->street }},{{ $post->district }},{{ $post->city }}</p>
                                                     </div>
-                                                    <div class="row">
-                                                        <p class="col-8">Diện tích</p>
-                                                        <p class="col-4">Ngày đăng</p>
-                                                    </div>
-                                                    <p>Loại phòng</p>
+
+                                                        <h4>{{ $post->cost }}</h4>
+
+
+                                                        <p>Diện tích: {{ $post->area }}</p>
+
+
+                                                        <p>Ngày đăng: {{ $post->created_at }}</p>
+
+                                                    <p>Loại phòng: {{ $post->categories }}</p>
                                                     <div class="d-flex justify-content-around">
                                                         <a href="#" class="btn btn-success text_center">Quan tâm</a>
                                                         <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
@@ -43,7 +43,9 @@
                                             </div>
                                     </div>
                                 <?php }?>
+                                
                         </div>
+                        {{ $posts->links() }}
                     </div>
                 </div>
             </div>
@@ -55,20 +57,20 @@
                     <h2 class="bg-warning text-white text-center">tin nổi bật</h2>
                     <hr>
                     <?php 
-                        for ($i=0; $i<12; $i++) { 
+                        foreach ($latestPosts as $post) { 
                                     
                     ?>
-                    <div class="card mx-auto mb-2">
+                    <div class="card mx-auto mb-2" style="height: 200px;font-size:8px;">
                         <div class="row row-cols-1 row-cols-lg-2 g-0">
                             <div class="col">
-                                <img src="https://bandon.vn/uploads/posts/thiet-ke-nha-tro-dep-2020-bandon-0.jpg"
-                                    class="img-fluid rounded-start" style="object-fit: cover; height: 100%;"
+                                <img src="{{ $post->img }}"
+                                    class="img-fluid rounded-start" style="object-fit: cover; height: 200px;width:250px;"
                                     alt="...">
                             </div>
                             <div class="col">
                                 <div class="card-body">
-                                    <h5 class="card-title">Tiêu đề phòng trọ</h5>
-                                    <h4>Giá tiền</h4>
+                                    <h5 class="card-title" style="font-size:16px;">{{ $post->title }}</h5>
+                                    <h4>{{ $post->cost }}</h4>
                                     <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                 </div>
                             </div>
@@ -79,13 +81,5 @@
             </div>
         </div>
     </div>
-    <nav class="justify-content-center" aria-label="...">
-        <ul class="pagination pagination-sm">
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">1</span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-        </ul>
-      </nav>
+    
 </div>

@@ -9,33 +9,57 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .error-message { color: red; margin:12px;font-size: italic;}
+    </style>
 </head>
 <body>
     @include('header')
     <div class="container mt-4 mb-4">
-        <h3>Đăng nhập tài khoản</h3>
+        <h3>Đăng ký tài khoản mới</h3>
         <div class="row mt-3">
             <div class="col-lg-7 col-md-12">
-                <form action="">
+                <form action="{{ route('doregist') }}">
+                    @csrf
                 <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="tên đăng nhập">
-                        <label for="floatingPassword">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="floatingInput" placeholder="tên đăng nhập" name='username'>
+                        <label for="floatingInput">Tên đăng nhập</label>
+                        @if ($errors -> has('username'))
+                            <span class="error-message">*{{ 
+                            $errors->first('username') }}</span>
+                        @endif
                       </div>
                     <div class="form-floating mb-4">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"name='email'>
                         <label for="floatingInput">địa chỉ email</label>
+                        @if ($errors -> has('email'))
+                            <span class="error-message">*{{ 
+                            $errors->first('email') }}</span>
+                        @endif
                       </div>
                       <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name='password'>
                         <label for="floatingPassword">mật khẩu</label>
+                        @if ($errors -> has('password'))
+                            <span class="error-message">*{{ 
+                            $errors->first('password') }}</span>
+                        @endif
                       </div>
                       <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name='password_confirmation'>
                         <label for="floatingPassword">nhập lại mật khẩu</label>
+                        @if ($errors -> has('password_confirmation'))
+                            <span class="error-message">*{{ 
+                            $errors->first('password_confirmation') }}</span>
+                        @endif
                       </div>
                       <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="số điện thoại">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="số điện thoại" name='phone'>
                         <label for="floatingPassword">Số điện thoại</label>
+                        @if ($errors -> has('phone'))
+                            <span class="error-message">*{{ 
+                            $errors->first('phone') }}</span>
+                        @endif
                       </div>
                       <button type="submit" class="btn btn-primary">đăng ký</button>
                 </form>

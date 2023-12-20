@@ -27,7 +27,7 @@ class AdminController extends Controller
 
     public function create(){
         // Truyền biến $user vào view để bạn có thể sử dụng nó trong trang sửa
-        return view('Dashboard.admin',['page'=>2]);
+        return view('Dashboard.admin',['page'=>3]);
     }
 
     public function remove($id){

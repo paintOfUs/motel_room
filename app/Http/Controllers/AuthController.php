@@ -8,10 +8,12 @@ use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\post;
 class AuthController extends Controller
 {
     public function index()
-    {
+    {   
+        $latePosts = post::latest()->take(3)->get();
         if (Auth::id()>0) {
             $user = Auth::user();
             if($user->role==0){
@@ -20,7 +22,7 @@ class AuthController extends Controller
                 return redirect()->route('home')->with('info','Bạn không cần phải đăng nhập nữa');
             }
         }
-        return view('login');
+        return view('login', ['latePosts'=>$latePosts]);
     }
 
     public function login(AuthRequest $request)

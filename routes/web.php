@@ -8,9 +8,11 @@ use App\Http\Controllers\CareController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\UpnewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\YourNewsController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use App\Models\post;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\YourInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::get('/', function () {
     return view('home',['posts'=> $posts,'latestPosts'=> $latestPosts]);
 })->name('home');
 
+
 //login and register
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/doLogin', [AuthController::class, 'login'])->name('dologin');
@@ -44,7 +47,7 @@ Route::get('/Admin/create', [AdminController::class, 'create'])->name('create');
 
 //User
 Route::match(['post', 'put'], '/create', [UserController::class, 'create'])->name('add');
-Route::get('/detail', [DetailController::class, 'detail'])->name('detail');
+Route::get('/detail/{id}', [DetailController::class, 'detail'])->name('detail');
 
 //Up new a motel room
 Route::get('/upnew', [UpnewController::class, 'index'])->name('upnew');
@@ -53,5 +56,6 @@ Route::get('/doupnew', [UpnewController::class, 'doupnew'])->name('doupnew');
 //Search
 Route::post('/search', [SearchController::class,'search'])->name('search');
 
-//Care
-Route::get('/care', [CareController::class, 'care'])->name('care');
+//See Your info and news
+Route::get('/yourinfo', [YourInfoController::class, 'infodetail'])->name('yourinfo');
+Route::get('/yournews', [YourNewsController::class, 'newsdetail'])->name('yournews');

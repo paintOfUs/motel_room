@@ -71,21 +71,21 @@
                     <h2 class="bg-warning text-white text-center">tin nổi bật</h2>
                     <hr>
                     <?php 
-                        for ($i=0; $i<3; $i++) { 
+                        for($i=0; $i<3; $i++) { 
                                     
                     ?>
-                    <div class="card mx-auto mb-2">
+                    <div class="card mx-auto mb-2" style="height: 200px;font-size:8px;">
                         <div class="row row-cols-1 row-cols-lg-2 g-0">
                             <div class="col">
-                                <img src="https://bandon.vn/uploads/posts/thiet-ke-nha-tro-dep-2020-bandon-0.jpg"
-                                    class="img-fluid rounded-start" style="object-fit: cover; height: 100%;"
+                                <img src="{{ $latePosts[$i]->img }}"
+                                    class="img-fluid rounded-start" style="object-fit: cover; height: 200px;width:250px;"
                                     alt="...">
                             </div>
                             <div class="col">
                                 <div class="card-body">
-                                    <h5 class="card-title">Tiêu đề phòng trọ</h5>
-                                    <h4>Giá tiền</h4>
-                                    <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
+                                    <h5 class="card-title" style="font-size:16px;">{{ $latePosts[$i]->title }}</h5>
+                                    <h4>Cost: {{ $latePosts[$i]->cost }}</h4>
+                                    <a href="{{ route('detail',['id' => $latePosts[$i]->id])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>

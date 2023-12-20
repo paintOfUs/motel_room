@@ -22,14 +22,21 @@
     @include('header')
     <div class="container">
         <div class="row">
+            
             <div class="col-lg-8 col-md-12">
-                <img src="https://bandon.vn/uploads/posts/thiet-ke-nha-tro-dep-2020-bandon-0.jpg"
-                    class="img-thumbnail mb-3 mt-3" alt="...">
-                <H5>Giá: </H5>
-                <h5>Diện tích</h5>
-                <h5>Địa chỉ</h5>
-                <h5>Điện thoại</h5>
-                <p><b>Descristion</b></p>
+                <div class="p-3">
+                    <h3>{{$post->title}}</h3>
+                    <img src="{{$post->img}}"
+                        class="img-thumbnail mb-3 mt-3" alt="..." style="height: 600px; width: 100%">
+                    <H5>Giá: {{$post->cost}}</H5>
+                    <h6>Diện tích: {{$post->area}}</h5>
+                    <h6>Địa chỉ: {{$post->street}}, {{$post->district}}, {{$post->city}}</h5>
+                    <p><b>Descristion</b>: {{$post->description}} </p>
+                    <h5>Người liên hệ: {{$post->contact_person}}</h5>
+                    <h5>SĐT: {{$post->phone}}</h5>
+                </div>
+                
+                
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="p-3">
@@ -37,22 +44,21 @@
                     <h2 class="bg-warning text-white text-center">tin nổi bật</h2>
                     <hr>
                     <?php 
-                    for ($i=0; $i<3; $i++) { 
-                                
-                ?>
-                    <div class="card mx-auto mb-2">
+                        for($i=0; $i<3; $i++) { 
+                                    
+                    ?>
+                    <div class="card mx-auto mb-2" style="height: 200px;font-size:8px;">
                         <div class="row row-cols-1 row-cols-lg-2 g-0">
                             <div class="col">
-                                <img src="https://bandon.vn/uploads/posts/thiet-ke-nha-tro-dep-2020-bandon-0.jpg"
-                                    class="img-fluid rounded-start" style="object-fit: cover; height: 100%;"
+                                <img src="{{ $latePosts[$i]->img }}"
+                                    class="img-fluid rounded-start" style="object-fit: cover; height: 200px;width:250px;"
                                     alt="...">
                             </div>
                             <div class="col">
                                 <div class="card-body">
-                                    <h5 class="card-title">Tiêu đề phòng trọ</h5>
-                                    <h4>Giá tiền</h4>
-                                    <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail']) }}"
-                                        class="btn btn-primary text_center">Xem chi tiết</a>
+                                    <h5 class="card-title" style="font-size:16px;">{{ $latePosts[$i]->title }}</h5>
+                                    <h4>Cost: {{ $latePosts[$i]->cost }}</h4>
+                                    <a href="{{ route('detail',['id' => $latePosts[$i]->id])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>

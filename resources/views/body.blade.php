@@ -18,6 +18,9 @@
                                     ?>
                                     <div class="col mb-4">
                                             <div class="card mx-auto" style="height: 604px;font-size: 12px;">
+                                                <?php
+                                                    $tt
+                                                ?>
                                                 <img src="{{ $post->img }}"
                                                     class="card-img-top" alt="..." style="width: auto; height: 300px; object-fit: cover; object-position: center;">
                                                 <div class="card-body">
@@ -35,9 +38,8 @@
                                                         <p>Ngày đăng: {{ $post->created_at }}</p>
 
                                                     <p>Loại phòng: {{ $post->categories }}</p>
-                                                    <div class="d-flex justify-content-around">
-                                                        <a href="#" class="btn btn-success text_center">Quan tâm</a>
-                                                        <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="{{ route('detail',['id' => $post->id])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,7 +73,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title" style="font-size:16px;">{{ $post->title }}</h5>
                                     <h4>{{ $post->cost }}</h4>
-                                    <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
+                                    <a href="{{ route('detail',['id' => $post->id])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>

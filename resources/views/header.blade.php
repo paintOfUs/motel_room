@@ -33,7 +33,9 @@ use Illuminate\Support\Facades\Auth;
                                         '. $user->user_name  .'
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                                        <li><a class="dropdown-item" href="'.route('yourinfo').'">Thông tin tài khoản</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="'.route('yournews').'">Tin đã đăng</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item bg-danger text-white" href="'. route('logout').'">Logout</a></li>
                                     </ul>

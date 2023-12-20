@@ -16,7 +16,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Select2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+  <style type="text/css">
+        .error-message { color: red; margin:12px;font-size: italic;}
+    </style>
 </head>
 <body>
     @include('header')
@@ -45,7 +47,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="district">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="district">
                         <label for="floatingPassword">District</label>
                         @if ($errors -> has('district'))
                             <span class="error-message">*{{ 
@@ -54,7 +56,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="city">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="city">
                         <label for="floatingPassword">City</label>
                         @if ($errors -> has('city'))
                             <span class="error-message">*{{ 
@@ -63,7 +65,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="area">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="area">
                         <label for="floatingPassword">Area</label>
                         @if ($errors -> has('area'))
                             <span class="error-message">*{{ 
@@ -72,7 +74,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="title">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="title">
                         <label for="floatingPassword">Title</label>
                         @if ($errors -> has('title'))
                             <span class="error-message">*{{ 
@@ -81,7 +83,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="description">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="description">
                         <label for="floatingPassword">Description</label>
                         @if ($errors -> has('description'))
                             <span class="error-message">*{{ 
@@ -90,7 +92,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="number" class="form-control" id="floatingPassword" placeholder="Password" name="cost">
+                        <input type="number" class="form-control" id="floatingPassword" placeholder="" name="cost">
                         <label for="floatingPassword">Cost</label>
                         @if ($errors -> has('cost'))
                             <span class="error-message">*{{ 
@@ -99,7 +101,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="contact_person">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="contact_person">
                         <label for="floatingPassword">Contact Person</label>
                         @if ($errors -> has('contact_person'))
                             <span class="error-message">*{{ 
@@ -108,7 +110,7 @@
                     </div>
 
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="phone">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="" name="phone">
                         <label for="floatingPassword">Phone</label>
                         @if ($errors -> has('phone'))
                             <span class="error-message">*{{ 
@@ -116,7 +118,7 @@
                         @endif
                     </div>
                     <div class="form-floating mb-4">
-                        <input type="url" class="form-control" id="floatingPassword" placeholder="Password" name="img">
+                        <input type="url" class="form-control" id="floatingPassword" placeholder="" name="img">
                         <label for="floatingPassword">Image</label>
                         @if ($errors -> has('img'))
                             <span class="error-message">*{{ 

@@ -55,9 +55,10 @@
                         @csrf
                         <ul class="list-group">
                             <li class="list-group-item" data-value="1">Dashboard</li>
-                            <li class="list-group-item" data-value="2">Update</li>
-                            <li class="list-group-item" data-value="3">Add</li>
-                            <li class="list-group-item" data-value="4">Users</li>
+                            <li class="list-group-item" data-value="2">AllNews</li>
+                            <li class="list-group-item" data-value="3">Update</li>
+                            <li class="list-group-item" data-value="4">Add</li>
+                            <li class="list-group-item" data-value="5">Users</li>
                         </ul>
                         <input type="hidden" name="selectedPage" id="selectedPage">
                     </form>
@@ -70,9 +71,11 @@
 
                 @include('Dashboard.dashboard')
             @elseif($page == 2)
-                @include('Dashboard.add')
+                @include('Dashboard.allnewsdashboard')
             @elseif($page == 3)
                 @include('Dashboard.update')
+            @elseif($page == 4)
+                @include('Dashboard.add')
             @endif
             
         </div>

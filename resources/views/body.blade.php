@@ -40,7 +40,9 @@
                                 <?php }?>
                                 
                         </div>
+                        @if($search!=1)
                         {{ $posts->links() }}
+                        @endif
                     </div>
                 </div>
             </div>

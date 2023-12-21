@@ -29,7 +29,7 @@ use App\Http\Controllers\YourInfoController;
 Route::get('/', function () {
     $posts = post::simplePaginate(3);
     $latestPosts = post::latest()->take(6)->get();
-    return view('home',['posts'=> $posts,'latestPosts'=> $latestPosts]);
+    return view('home',['posts'=> $posts,'latestPosts'=> $latestPosts,'search'=>null]);
 })->name('home');
 
 

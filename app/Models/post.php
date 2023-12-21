@@ -12,10 +12,13 @@ class post extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
      /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string, BigInteger>
      */
+
     protected $fillable = ['id','title', 'description', 'categories', 'street', 'district', 'city','area','cost','contact_person','phone','user_id','img'];
+
 }

@@ -55,10 +55,9 @@
                         @csrf
                         <ul class="list-group">
                             <li class="list-group-item" data-value="1">Dashboard</li>
-                            <li class="list-group-item" data-value="2">AllNews</li>
-                            <li class="list-group-item" data-value="3">Update</li>
-                            <li class="list-group-item" data-value="4">Add</li>
-                            <li class="list-group-item" data-value="5">Users</li>
+                            <li class="list-group-item" data-value="2">Update</li>
+                            <li class="list-group-item" data-value="3">Add</li>
+                            <li class="list-group-item" data-value="4">Users</li>
                         </ul>
                         <input type="hidden" name="selectedPage" id="selectedPage">
                     </form>

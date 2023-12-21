@@ -14,6 +14,7 @@ use App\Models\post;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\YourInfoController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,7 @@ Route::get('/', function () {
     $latestPosts = post::latest()->take(6)->get();
     return view('home',['posts'=> $posts,'latestPosts'=> $latestPosts]);
 })->name('home');
+
 
 
 //login and register
@@ -59,3 +61,4 @@ Route::post('/search', [SearchController::class,'search'])->name('search');
 //See Your info and news
 Route::get('/yourinfo', [YourInfoController::class, 'infodetail'])->name('yourinfo');
 Route::get('/yournews', [YourNewsController::class, 'newsdetail'])->name('yournews');
+

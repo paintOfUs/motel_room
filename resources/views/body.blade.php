@@ -17,29 +17,22 @@
                                     # code...
                                     ?>
                                     <div class="col mb-4">
-                                            <div class="card mx-auto" style="height: 604px;font-size: 12px;">
-                                                <?php
-                                                    $tt
-                                                ?>
-                                                <img src="{{ $post->img }}"
-                                                    class="card-img-top" alt="..." style="width: auto; height: 300px; object-fit: cover; object-position: center;">
+                                            <div class="card mx-auto">
+                                                <img src="https://bandon.vn/uploads/posts/thiet-ke-nha-tro-dep-2020-bandon-0.jpg"
+                                                    class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <div class="row">
                                                             <h5 class="card-title">{{ $post->title }}</h5>
                                                             <p class="card-text">{{ $post->street }},{{ $post->district }},{{ $post->city }}</p>
                                                     </div>
-
-                                                        <h4>{{ $post->cost }}</h4>
-
-
-                                                        <p>Diện tích: {{ $post->area }}</p>
-
-
-                                                        <p>Ngày đăng: {{ $post->created_at }}</p>
-
-                                                    <p>Loại phòng: {{ $post->categories }}</p>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a href="{{ route('detail',['id' => $post->id])}}" class="btn btn-primary text_center">Xem chi tiết</a>
+                                                    <div class="row">
+                                                        <p class="col-8">Diện tích</p>
+                                                        <p class="col-4">Ngày đăng</p>
+                                                    </div>
+                                                    <p>Loại phòng</p>
+                                                    <div class="d-flex justify-content-around">
+                                                        <a href="#" class="btn btn-success text_center">Quan tâm</a>
+                                                        <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,9 +64,9 @@
                             </div>
                             <div class="col">
                                 <div class="card-body">
-                                    <h5 class="card-title" style="font-size:16px;">{{ $post->title }}</h5>
-                                    <h4>{{ $post->cost }}</h4>
-                                    <a href="{{ route('detail',['id' => $post->id])}}" class="btn btn-primary text_center">Xem chi tiết</a>
+                                    <h5 class="card-title">Tiêu đề phòng trọ</h5>
+                                    <h4>Giá tiền</h4>
+                                    <a href="{{ action([\App\Http\Controllers\DetailController::class, 'detail'])}}" class="btn btn-primary text_center">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>
